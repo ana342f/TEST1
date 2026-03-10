@@ -1,0 +1,60 @@
+<html>
+  <head><title> ffff</title>
+  
+  <style>
+
+#products{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.product{
+background:white;
+padding:15px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.product img{
+max-width:150px;
+}
+
+
+  </style>
+  </head>
+
+<body>
+<div id="products"></div>
+
+  <script>
+
+fetch("products.json")
+.then(response => response.json())
+.then(data => {
+
+const container = document.getElementById("products")
+
+data.forEach(product => {
+
+container.innerHTML += `
+<div class="product">
+
+<img src="${product.img}" width="150">
+
+<h3>${product.name}</h3>
+
+<p>${product.price} ₴</p>
+
+</div>
+`
+
+})
+
+})
+
+</script>
+</body>
+</html>
